@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.antoci.ai"
+        minSdkVersion 9
+        targetSdkVersion 28
+        versionCode 1
+        multiDexEnabled true
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11 -frtti -fexceptions"
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+dependencies {
+//    implementation ('com.github.ytai.ioio:IOIOLibPC:5.05'){
+//        exclude group: 'ioio.lib.spi.LogImpl'
+//    }
+
+    implementation ('com.github.ytai.ioio:IOIOLibAndroid:5.07'){
+
+    }
+    implementation ('com.github.ytai.ioio:IOIOLibAndroidBluetooth:5.07'){
+
+    }
+    implementation ('com.github.ytai.ioio:IOIOLibAndroidAccessory:5.07'){
+
+    }
+    implementation ('com.github.ytai.ioio:IOIOLibAndroidDevice:5.07'){
+
+    }
+
+    implementation 'com.android.support:multidex:1.0.3'
+}
